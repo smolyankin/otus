@@ -1,0 +1,15 @@
+[Unit]
+Description=Otus Backend Api
+
+[Service]
+WorkingDirectory=/var/www
+ExecStart=/usr/bin/dotnet /var/www/OtusApi.dll
+Restart=always
+RestartSec=10
+SyslogIdentifier=otus-api
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=ASPNETCORE_URLS=http://0.0.0.0:8080
+
+[Install]
+WantedBy=multi-user.target
