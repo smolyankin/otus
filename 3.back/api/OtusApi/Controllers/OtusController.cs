@@ -19,7 +19,7 @@ namespace OtusApi.Controllers
         public async Task<IEnumerable<RequestEntity>> Get()
         {
             //var ip = HttpContext.Connection.LocalIpAddress?.ToString();
-            var ip = Dns.GetHostEntry(Dns.GetHostName(), AddressFamily.InterNetwork).AddressList.FirstOrDefault()?.ToString()
+            var ip = Dns.GetHostEntry(Dns.GetHostName(), AddressFamily.InterNetwork).AddressList.LastOrDefault()?.ToString()
                 ?? throw new Exception("ip v4 not found");
 
             var request = new RequestEntity { Ip = ip };
