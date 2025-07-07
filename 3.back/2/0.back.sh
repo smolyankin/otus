@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Настройка имени машины"
-hostnamectl set-hostname otus-back
+hostnamectl set-hostname otus-back2
 
 echo "Установка dotnet"
 apt-get update

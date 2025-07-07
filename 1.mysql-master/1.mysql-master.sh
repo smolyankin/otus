@@ -4,7 +4,7 @@ ROOT_PASS="1234"
 REPL_PASS="repl"
 DB_NAME="otus"
 
-cp ./otus/1.mysql-master/mysqld.cnf /etc/mysql/mysql.conf.d
+cp mysqld.cnf /etc/mysql/mysql.conf.d
 systemctl restart mysql
 
 mysql
