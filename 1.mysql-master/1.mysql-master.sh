@@ -7,21 +7,13 @@ DB_NAME="otus"
 cp mysqld.cnf /etc/mysql/mysql.conf.d
 systemctl restart mysql
 
-mysql
-use mysql;
+mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'caching_sha2_password' BY '$ROOT_PASS';"
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH 'caching_sha2_password' BY '$ROOT_PASS';
+mysql -e "CREATE USER IF NOT EXISTS repl@'%' IDENTIFIED WITH 'caching_sha2_password' BY '$REPL_PASS';"
+mysql -e "GRANT REPLICATION SLAVE ON *.* TO repl@'%';"
+mysql -e "FLUSH PRIVILEGES;"
 
-CREATE USER IF NOT EXISTS repl@'%' IDENTIFIED WITH 'caching_sha2_password' BY '$REPL_PASS'; 
-GRANT REPLICATION SLAVE ON *.* TO repl@'%';
-FLUSH PRIVILEGES;
-
-CREATE DATABASE IF NOT EXISTS $DB_NAME;
-
-use $DB_NAME;
-
-CREATE TABLE IF NOT EXISTS requests (
+mysql -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;"
+mysql -e "CREATE TABLE IF NOT EXISTS requests (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    ip VARCHAR(45) NOT NULL);
-	
-exit;
+    ip VARCHAR(45) NOT NULL);"
