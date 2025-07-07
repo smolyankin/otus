@@ -1,0 +1,11 @@
+[mysqld]
+user		= mysql
+bind-address            = 0.0.0.0
+key_buffer_size		= 16M
+myisam-recover-options  = BACKUP
+log_error = /var/log/mysql/error.log
+server-id=1
+max_binlog_size   = 100M
+gtid-mode=ON
+enforce-gtid-consistency
+log-replica-updates
