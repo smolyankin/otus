@@ -19,6 +19,9 @@ builder.Services.AddDbContext<OtusDbContext>(
         .EnableDetailedErrors()
 );
 
+//builder.Logging.AddConsole();
+//builder.Services.AddSingleton<ILogger>(GetLoggerFactory().CreateLogger("InstanceName"));
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddEndpointsApiExplorer();
