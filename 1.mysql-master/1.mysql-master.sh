@@ -1,18 +1,18 @@
 #!/bin/bash
 
-ROOT_PASS="1234"
+API_USER="api_user"
+API_PASS="1234"
 REPL_PASS="repl"
 DB_NAME="otus"
 
 cp mysqld.cnf /etc/mysql/mysql.conf.d
 systemctl restart mysql
 
-mysql -uroot -p -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'caching_sha2_password' BY '$ROOT_PASS'; FLUSH PRIVILEGES;"
-
 mysql -uroot -p"$ROOT_PASS" -e "CREATE USER IF NOT EXISTS repl@'%' IDENTIFIED WITH 'caching_sha2_password' BY '$REPL_PASS'; FLUSH PRIVILEGES;"
 mysql -uroot -p"$ROOT_PASS" -e "GRANT REPLICATION SLAVE ON *.* TO repl@'%'; FLUSH PRIVILEGES;"
-mysql -uroot -p"$ROOT_PASS" -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'10.0.0.103' IDENTIFIED BY '$ROOT_PASS'; FLUSH PRIVILEGES;"
-mysql -uroot -p"$ROOT_PASS" -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'10.0.0.104' IDENTIFIED BY '$ROOT_PASS'; FLUSH PRIVILEGES;"
+
+mysql -uroot -p"$ROOT_PASS" -e "CREATE USER '$API_USER'@'%' IDENTIFIED BY '$API_PASS'; FLUSH PRIVILEGES;"
+mysql -uroot -p"$ROOT_PASS" -e "GRANT ALL PRIVILEGES ON *.* TO '$API_USER'@'%' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
 mysql -uroot -p"$ROOT_PASS" -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;"
 mysql -uroot -p"$ROOT_PASS" -e "USE $DB_NAME; CREATE TABLE IF NOT EXISTS requests (id BIGINT AUTO_INCREMENT PRIMARY KEY, ip VARCHAR(45) NOT NULL);"
