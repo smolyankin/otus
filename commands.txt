@@ -1,4 +1,4 @@
 git clone https://github.com/smolyankin/otus.git
 
-curl --location 'http://localhost:8080/otus'
+curl 'http://localhost:8080/otus'
 sudo journalctl -u otus-api.service

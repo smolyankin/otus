@@ -3,7 +3,7 @@
 PUBLISH_DIR="/var/www"
 SERVICE_NAME="otus-api.service"
 
-cd ./api
+cd /home/ad/otus/3.back/api
 
 echo "dotnet restore"
 dotnet restore
@@ -17,11 +17,10 @@ sudo chown -R www-data:www-data $PUBLISH_DIR
 sudo chmod 755 $PUBLISH_DIR
 
 echo "Копирование настроек сервиса"
-cd ..
-cp otus-api.service /etc/systemd/system/otus-api.service
+cp /home/ad/otus/3.back/otus-api.service /etc/systemd/system/otus-api.service
 
 echo "Настройка сети"
-cp /home/ad/otus/3.back/2/01-netcfg.yaml /etc/netplan/01-netcfg.yaml
+cp /home/ad/otus/3.back/1/01-netcfg.yaml /etc/netplan/01-netcfg.yaml
 chmod 600 /etc/netplan/01-netcfg.yaml
 netplan apply
 
