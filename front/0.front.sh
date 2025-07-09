@@ -10,7 +10,7 @@ echo "Запуск nginx"
 systemctl start nginx
 
 echo "Настройка сети"
-cp ./otus/4.front/01-netcfg.yaml /etc/netplan/01-netcfg.yaml
+cp /home/ad/otus/front/01-netcfg.yaml /etc/netplan/01-netcfg.yaml
 chmod 600 /etc/netplan/01-netcfg.yaml
 netplan apply
 

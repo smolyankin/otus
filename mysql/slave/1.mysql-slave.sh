@@ -5,7 +5,7 @@ API_PASS="1234"
 REPL_PASS="repl"
 DB_NAME="otus"
 
-cp mysqld.cnf /etc/mysql/mysql.conf.d
+cp /home/ad/otus/mysql/slave/mysqld.cnf /etc/mysql/mysql.conf.d
 systemctl restart mysql
 
 mysql -uroot -e "CREATE USER IF NOT EXISTS repl@'%' IDENTIFIED WITH 'caching_sha2_password' BY '$REPL_PASS'; FLUSH PRIVILEGES;"
