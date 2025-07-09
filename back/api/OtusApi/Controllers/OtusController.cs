@@ -34,8 +34,7 @@ namespace OtusApi.Controllers
             //    _logger.LogInformation(item.ToString());
             //}
             var ip = Dns.GetHostEntry(Dns.GetHostName(), AddressFamily.InterNetwork).AddressList
-                .Where(x => x.ToString().StartsWith("10.0.0."))
-                .LastOrDefault()?.ToString()
+                .FirstOrDefault()?.ToString()
                 ?? throw new Exception("ip v4 not found");
 
             var request = new RequestEntity { Ip = ip };

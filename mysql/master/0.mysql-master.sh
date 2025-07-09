@@ -10,7 +10,7 @@ echo "Запуск MySQL"
 systemctl start mysql
 
 echo "Настройка сети"
-cp ./otus/1.mysql-master/01-netcfg.yaml /etc/netplan/01-netcfg.yaml
+cp /home/ad/otus/mysql/master/01-netcfg.yaml /etc/netplan/01-netcfg.yaml
 chmod 600 /etc/netplan/01-netcfg.yaml
 netplan apply
 
