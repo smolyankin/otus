@@ -4,4 +4,6 @@ echo "Копирование настроек prometheus"
 cp /home/ad/otus/monitoring/prometheus.yml /etc/prometheus/prometheus.yml
 
 echo "Перезапуск prometheus"
+systemctl daemon-reload
+systemctl enable prometheus
 systemctl restart prometheus

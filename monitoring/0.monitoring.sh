@@ -4,6 +4,10 @@ echo "Настройка имени машины"
 hostnamectl set-hostname otus-monitoring
 
 apt-get update
+
+echo "Установка prometheus-node-exporter"
+apt install prometheus-node-exporter -y
+
 echo "Установка prometheus"
 apt-get install prometheus -y
 
