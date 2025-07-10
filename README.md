@@ -1,5 +1,7 @@
 # Nginx, Backends, Databases, Monitoring and Logging
 
+Ubuntu, MySQL, .NET, Nginx, Prometheus, Grafana
+
 Предусловия:
 - установлен VirtualBox
 - скачен образ ubuntu-22.04.5-live-server-amd64.iso
