@@ -16,8 +16,8 @@ dpkg -i grafana_11.6.3_amd64.deb
 echo "Запуск prometheus"
 systemctl start prometheus
 
-echo "Запуск grafana"
-systemctl start grafana
+echo "Запуск grafana-server"
+systemctl start grafana-server
 
 echo "Настройка сети"
 cp /home/ad/otus/monitoring/01-netcfg.yaml /etc/netplan/01-netcfg.yaml
