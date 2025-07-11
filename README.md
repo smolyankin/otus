@@ -14,8 +14,8 @@ Ubuntu, MySQL, .NET, Nginx, Prometheus, Grafana
 | otus-back-1         | 192.168.0.103 | Бекенд (dotnet api)            | back/1       | 3                 |8080 |
 | otus-back-2        | 192.168.0.104 | Бекенд (dotnet api)            | back/2       | 4                 |8080 |
 | otus-front        | 192.168.0.105 | Фронтенд (nginx балансировщик) | front        | 5                 |8080 |
-| otus-monitoring   | 192.168.0.106 | Мониторинг                     | monitoring   | 6                 | |
-| otus-logging      | 192.168.0.107 | Логирование                    | logging      | 7                 | |
+| otus-monitoring   | 192.168.0.106 | Мониторинг                     | monitoring   | 6                 |3000 (admin/admin) |
+| otus-logging      | 192.168.0.107 | Логирование                    | logging      | 7                 |9200; 5601 |
 
 ## Общие предусловия для каждой виртуальной машины
 - установлена Ubuntu с пользователем ad с паролем ad и включенным ssh

@@ -7,3 +7,7 @@ echo "Перезапуск prometheus"
 systemctl daemon-reload
 systemctl enable prometheus
 systemctl restart prometheus
+
+echo "Перезапуск grafana-server"
+systemctl enable grafana-server
+systemctl restart grafana-server
