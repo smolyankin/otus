@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "Настройка имени машины"
-hostnamectl set-hostname otus-logging
-
 apt-get update
 
 #echo "Установка prometheus-node-exporter"
