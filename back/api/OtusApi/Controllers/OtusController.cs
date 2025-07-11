@@ -20,19 +20,6 @@ namespace OtusApi.Controllers
 
         public async Task<IEnumerable<RequestEntity>> Get()
         {
-            //var ip = HttpContext.Connection.LocalIpAddress?.ToString();
-            //var allNetworkAddressList = Dns.GetHostEntry(Dns.GetHostName()).AddressList;
-            //foreach (var item in allNetworkAddressList)
-            //{
-            //    _logger.LogInformation("All Networks:");
-            //    _logger.LogInformation(item.ToString());
-            //}
-            //var interNetworkAddressList = Dns.GetHostEntry(Dns.GetHostName(), AddressFamily.InterNetwork).AddressList;
-            //foreach (var item in interNetworkAddressList)
-            //{
-            //    _logger.LogInformation("InterNetwork Networks:");
-            //    _logger.LogInformation(item.ToString());
-            //}
             var ip = Dns.GetHostEntry(Dns.GetHostName(), AddressFamily.InterNetwork).AddressList
                 .FirstOrDefault()?.ToString()
                 ?? throw new Exception("ip v4 not found");
@@ -42,6 +29,18 @@ namespace OtusApi.Controllers
             await _context.SaveChangesAsync();
 
             return _context.Requests.OrderByDescending(x => x.Id);
+        }
+
+        [HttpPost("bad")]
+        public IActionResult Bad() 
+        {
+            return BadRequest();
+        }
+
+        [HttpDelete("error")]
+        public IActionResult Error()
+        {
+            throw new NotImplementedException();
         }
     }
 }

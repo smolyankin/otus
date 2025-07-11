@@ -2,3 +2,7 @@ git clone https://github.com/smolyankin/otus.git
 
 curl 'http://localhost:8080/otus'
 sudo journalctl -u otus-api.service
+sudo journalctl -u kibana.service
+sudo journalctl -u filebeat.service
+
+sudo systemctl status elasticsearch

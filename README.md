@@ -1,6 +1,6 @@
 # Nginx, Backends, Databases, Monitoring and Logging
 
-Ubuntu, MySQL, .NET, Nginx, Prometheus, Grafana
+Ubuntu, MySQL, .NET, Nginx, Prometheus, Grafana, Elasticsearch, Kibana, Logstash, Filebeat
 
 Предусловия:
 - установлен VirtualBox
@@ -50,7 +50,9 @@ sudo bash /home/ad/otus/back/*/1.back.sh для каждой виртуальн�
 ## Front
 
 ### Предусловие
-sudo bash /home/ad/otus/front/0.front.sh (меняет имя машины, устанавливает nginx, настраивает сетевой интерфейс и перезагружает)
+- sudo bash /home/ad/otus/front/0.front.sh (меняет имя машины, устанавливает nginx, настраивает сетевой интерфейс и перезагружает)
+- скопирован с хостовой машины дистрибутивы filebeat в /home/ad
+- sudo bash /home/ad/otus/front/2.front.sh (устанавливает и настраивает filebeat и перезагружает)
 
 ### Скрипт
 sudo bash /home/ad/otus/front/1.front.sh.
@@ -58,4 +60,32 @@ sudo bash /home/ad/otus/front/1.front.sh.
 ### Файлы
 - nginx.conf - конфигурация nginx
 - default - настройки балансировки и маршрутизации
+- filebeat.yml - конфигурация filebeat
 
+## Monitoring
+
+### Предусловие
+sudo bash /home/ad/otus/monitoring/0.monitoring.sh (меняет имя машины, устанавливает prometheus-node-exporter, prometheus, grafana, настраивает сетевой интерфейс и перезагружает)
+
+### Скрипт
+sudo bash /home/ad/otus/monitoring/1.monitoring.sh.
+
+### Файлы
+- prometheus.yml - конфигурация prometheus
+
+## Logging
+
+### Предусловие
+- виртуальная машина с х2 ресурсами
+- sudo bash /home/ad/otus/logging/0.logging.sh (меняет имя машины, настраивает сетевой интерфейс и перезагружает)
+- скопированы с хостовой машины дистрибутивы elasticsearch, kibana и logstash в /home/ad
+- sudo bash /home/ad/otus/logging/2.logging.sh (устанавливает elasticsearch, kibana, logstash и перезагружает)
+
+### Скрипт
+sudo bash /home/ad/otus/logging/1.logging.sh.
+
+### Файлы
+- elasticsearch.yml - конфигурация elasticsearch
+- kibana.yml - конфигурация kibana
+- logstash.yml - конфигурация logstash
+- logstash-nginx-es.conf - конфигурация logstash nginx
