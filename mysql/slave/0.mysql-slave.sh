@@ -3,6 +3,9 @@
 echo "Настройка имени машины"
 hostnamectl set-hostname otus-mysql-slave
 
+echo "Установка prometheus-node-exporter"
+apt install prometheus-node-exporter -y
+
 echo "Установка MySQL"
 apt install mysql-server-8.0 -y
 

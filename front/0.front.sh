@@ -3,6 +3,9 @@
 echo "Настройка имени машины"
 hostnamectl set-hostname otus-front
 
+echo "Установка prometheus-node-exporter"
+apt install prometheus-node-exporter -y
+
 echo "Установка nginx"
 apt install nginx -y
 
