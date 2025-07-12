@@ -35,6 +35,15 @@ sudo bash /home/ad/otus/mysql/master/1.mysql-master.sh.
 
 ## MySQL slave
 
+### Предусловие
+sudo bash /home/ad/otus/mysql/slave/0.mysql-slave.sh (меняет имя машины, устанавливает MySQL, настраивает сетевой интерфейс и перезагружает)
+
+### Скрипт
+sudo bash /home/ad/otus/mysql/slave/1.mysql-slave.sh.
+
+### Файлы
+- mysqld.cnf - настройки mysql
+
 ## Backend
 
 ### Предусловие

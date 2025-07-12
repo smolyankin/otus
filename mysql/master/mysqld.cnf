@@ -9,3 +9,5 @@ max_binlog_size   = 100M
 gtid-mode=ON
 enforce-gtid-consistency
 log-replica-updates
+log-bin = mysql-bin
+binlog_format = row

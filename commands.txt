@@ -6,3 +6,6 @@ sudo journalctl -u kibana.service
 sudo journalctl -u filebeat.service
 
 sudo systemctl status elasticsearch
+
+show replica status;
+SELECT * FROM Requests ORDER BY `Id` DESC
