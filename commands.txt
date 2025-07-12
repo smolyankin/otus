@@ -10,3 +10,5 @@ sudo systemctl status elasticsearch
 show replica status\G;
 show databases;
 SELECT * FROM Requests ORDER BY `Id` ASC;
+
+git reset --hard origin/main
