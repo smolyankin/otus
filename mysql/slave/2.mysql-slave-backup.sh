@@ -10,7 +10,7 @@ echo "Пуш бэкапа в репозиторий"
 git config --global user.email 'zibo99@gmail.com'
 git config --global user.name 'smolyankin'
 cd /home/ad/otus
-git add . && git commit -m 'Database backup' && git push origin master
+git add . && git commit -m 'Database backup' && git push origin main
 
 echo "Возобновление репликации"
 mysql -uroot -e "START REPLICA;"
