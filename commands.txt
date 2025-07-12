@@ -7,5 +7,6 @@ sudo journalctl -u filebeat.service
 
 sudo systemctl status elasticsearch
 
-show replica status;
-SELECT * FROM Requests ORDER BY `Id` DESC
+show replica status\G;
+show databases;
+SELECT * FROM Requests ORDER BY `Id` ASC;

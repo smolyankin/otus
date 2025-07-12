@@ -98,3 +98,10 @@ sudo bash /home/ad/otus/logging/1.logging.sh.
 - kibana.yml - конфигурация kibana
 - logstash.yml - конфигурация logstash
 - logstash-nginx-es.conf - конфигурация logstash nginx
+
+## Бэкап
+### Создание
+Запустить на машине otus-mysql-slave скрипт sudo bash /home/ad/otus/mysql/slave/2.mysql-slave-backup.sh
+
+### Восстановление
+Запустить на машине otus-mysql-master скрипт sudo bash /home/ad/otus/mysql/master/2.mysql-master-restore.sh
