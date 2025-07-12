@@ -25,7 +25,7 @@ Ubuntu, MySQL, .NET, Nginx, Prometheus, Grafana, Elasticsearch, Kibana, Logstash
 ## MySQL master
 
 ### Предусловие
-sudo bash /home/ad/otus/mysql/master/0.mysql-master.sh (меняет имя машины, устанавливает MySQL, настраивает сетевой интерфейс и перезагружает)
+sudo bash /home/ad/otus/mysql/master/0.mysql-master.sh (меняет имя машины, устанавливает MySQL и prometheus-node-exporter, настраивает сетевой интерфейс и перезагружает)
 
 ### Скрипт
 sudo bash /home/ad/otus/mysql/master/1.mysql-master.sh.
@@ -36,7 +36,7 @@ sudo bash /home/ad/otus/mysql/master/1.mysql-master.sh.
 ## MySQL slave
 
 ### Предусловие
-sudo bash /home/ad/otus/mysql/slave/0.mysql-slave.sh (меняет имя машины, устанавливает MySQL, настраивает сетевой интерфейс и перезагружает)
+sudo bash /home/ad/otus/mysql/slave/0.mysql-slave.sh (меняет имя машины, устанавливает MySQL и prometheus-node-exporter, настраивает сетевой интерфейс и перезагружает)
 
 ### Скрипт
 sudo bash /home/ad/otus/mysql/slave/1.mysql-slave.sh.
@@ -54,12 +54,12 @@ sudo bash /home/ad/otus/back/*/1.back.sh для каждой виртуальн�
 
 ### Файлы
 - otus-api.service - конфигурация апи как службы
-- /api - dotnet api. При запросе /otus сохраняет в БД otus в таблицу Requests IP адрес сервера и возвращает в ответе все записи из таблицы Requests.
+- /api - dotnet api. При запросе /otus сохраняет в БД otus в таблицу Requests IP адрес сервера и возвращает в ответе все записи из таблицы Requests в обратном порядке.
 
 ## Front
 
 ### Предусловие
-- sudo bash /home/ad/otus/front/0.front.sh (меняет имя машины, устанавливает nginx, настраивает сетевой интерфейс и перезагружает)
+- sudo bash /home/ad/otus/front/0.front.sh (меняет имя машины, устанавливает nginx и prometheus-node-exporter, настраивает сетевой интерфейс и перезагружает)
 - скопирован с хостовой машины дистрибутивы filebeat в /home/ad
 - sudo bash /home/ad/otus/front/2.front.sh (устанавливает и настраивает filebeat и перезагружает)
 
@@ -86,7 +86,7 @@ sudo bash /home/ad/otus/monitoring/1.monitoring.sh.
 
 ### Предусловие
 - виртуальная машина с х2 ресурсами
-- sudo bash /home/ad/otus/logging/0.logging.sh (меняет имя машины, настраивает сетевой интерфейс и перезагружает)
+- sudo bash /home/ad/otus/logging/0.logging.sh (меняет имя машины, устанавливает prometheus-node-exporter, настраивает сетевой интерфейс и перезагружает)
 - скопированы с хостовой машины дистрибутивы elasticsearch, kibana и logstash в /home/ad
 - sudo bash /home/ad/otus/logging/2.logging.sh (устанавливает elasticsearch, kibana, logstash и перезагружает)
 
@@ -102,6 +102,9 @@ sudo bash /home/ad/otus/logging/1.logging.sh.
 ## Бэкап
 ### Создание
 Запустить на машине otus-mysql-slave скрипт sudo bash /home/ad/otus/mysql/slave/2.mysql-slave-backup.sh
+
+### Перемещение
+Переместить с otus-mysql-slave файл /home/ad/backup.sql на otus-mysql-master по такому же пути.
 
 ### Восстановление
 Запустить на машине otus-mysql-master скрипт sudo bash /home/ad/otus/mysql/master/2.mysql-master-restore.sh
